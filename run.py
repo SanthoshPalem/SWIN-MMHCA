@@ -71,7 +71,7 @@ def train(args):
     
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
-    model_path = os.path.join(args.save_dir, 'swin_mmhca.pth')
+    model_path = os.path.join(args.save_dir, f'swin_mmhca_x{args.scale_factor}.pth')
     torch.save(model.state_dict(), model_path)
     print(f"Model saved to {model_path}")
 

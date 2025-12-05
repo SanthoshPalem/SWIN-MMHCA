@@ -101,8 +101,9 @@ class MultiModalSuperResDataset(data.Dataset):
             lr_images.append(lr_img)
 
             if mod == target_modality:
-                # Resize HR image for the model output
-                hr_img_pil = img_pil.resize((256, 256), Image.BICUBIC)
+                # Resize HR image for the model output, dynamically based on scale
+                hr_size = 64 * self.scale_factor
+                hr_img_pil = img_pil.resize((hr_size, hr_size), Image.BICUBIC)
                 if self.transform:
                     hr_image = self.transform(hr_img_pil)
                 else:
